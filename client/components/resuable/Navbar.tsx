@@ -34,7 +34,7 @@ function Navbar() {
             {/* Desktop Navbar */}
             <div className="max-w-7xl md:px-24 px-6 py-4 flex items-center justify-between">
                 
-                <Link href="/" className="text-[#656FE4] text-2xl font-extrabold tracking-widest flex justify-center items-center gap-2">
+                <Link href="/" className="text-primary text-2xl font-extrabold tracking-widest flex justify-center items-center gap-2">
                     <Image src="/logo.png" width={40} height={40} className='rounded' alt="logo" />
                     TaskFlow
                 </Link>
@@ -44,7 +44,7 @@ function Navbar() {
                         <li key={index}>
                             <Link
                                 href={item.href}
-                                className="text-white text-base font-medium hover:text-[#656FE4] transition"
+                                className="text-white text-base font-medium hover:text-primary transition"
                             >
                                 {item.name}
                             </Link>
@@ -55,7 +55,7 @@ function Navbar() {
                 {false ? (
                     <button
                         onClick={logoutHandler}
-                        className="hidden md:inline-block bg-(--color-primary) text-white px-5 py-2 rounded-full border-2 hover:text-(--color-primary) hover:bg-[#000310] border-(--color-primary) transition"
+                        className="hidden md:inline-block bg-primary text-white px-5 py-2 rounded-full border-2 hover:text-primary hover:bg-background border-primary transition"
                     >
                         Logout
                     </button>
@@ -63,7 +63,7 @@ function Navbar() {
 
                     <Link
                         href="/auth/login"
-                        className="hidden md:inline-block bg-(--color-primary) text-white px-5 py-2 rounded-full border-2 hover:text-(--color-primary) hover:bg-[#000310] border-(--color-primary) transition"
+                        className="hidden md:inline-block bg-primary text-white px-5 py-2 rounded-full border-2 hover:text-primary) hover:bg-background border-primary transition"
                     >
                         Login
                     </Link>
@@ -90,7 +90,7 @@ function Navbar() {
                             <Link
                                 href={item.href}
                                 onClick={() => setIsOpen(false)}
-                                className="block text-white text-lg font-medium hover:text-[#656FE4] transition"
+                                className="block text-white text-lg font-medium hover:text-primary transition"
                             >
                                 {item.name}
                             </Link>
@@ -101,7 +101,7 @@ function Navbar() {
                         <Link
                             href="/auth/login"
                             onClick={() => setIsOpen(false)}
-                            className="block w-full text-center bg-(--color-primary) text-white font-semibold px-5 py-2 rounded-full hover:bg-[#000310] transition"
+                            className="block w-full text-center bg-primary text-white font-semibold px-5 py-2 rounded-full hover:bg-lightprimary transition"
                         >
                             Login
                         </Link>

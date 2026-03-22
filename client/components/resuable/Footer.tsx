@@ -6,7 +6,7 @@ import { fadeUp } from "./FadeUpAnimation";
 
 export default function Footer() {
     return (
-        <footer className="relative bg-transparent text-[#F0F4FF] overflow-hidden pt-20 pb-10 px-6">
+        <footer className="relative bg-background text-[#F0F4FF] overflow-hidden pt-20 pb-10 px-6">
 
             <div
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-0.5 opacity-20"
@@ -26,15 +26,15 @@ export default function Footer() {
                         className="md:col-span-2 flex flex-col gap-5"
                     >
                         <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg bg-(--color-primary)/20 border border-(--color-primary)/40 flex items-center justify-center">
-                                <Sparkles size={14} className="text-(--color-primary)" />
+                            <div className="w-8 h-8 rounded-lg bg-primary/20 border border-primary/40 flex items-center justify-center">
+                                <Sparkles size={14} className="text-primary" />
                             </div>
                             <span className="text-xl font-extrabold tracking-widest text-[#F0F4FF]">
                                 TaskFlow
                             </span>
                         </div>
 
-                        <p className="text-[#6B7A99] text-sm leading-[1.8] max-w-[280px]">
+                        <p className="text-lightprimary text-sm leading-[1.8] max-w-[280px]">
                             The AI-native workspace that keeps your team aligned, focused, and shipping — every single day.
                         </p>
                     </motion.div>
@@ -58,7 +58,7 @@ export default function Footer() {
                                     <li key={item}>
                                         <a
                                             href="#"
-                                            className="text-[#6B7A99] text-sm hover:text-(--color-primary) transition-colors duration-200"
+                                            className="text-lightprimary text-sm hover:text-primary transition-colors duration-200"
                                         >
                                             {item}
                                         </a>
@@ -79,7 +79,7 @@ export default function Footer() {
                     whileInView="visible"
                     viewport={{ once: true }}
                     custom={0.3}
-                    className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#6B7A99]"
+                    className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-lightprimary"
                 >
                     <span>© {new Date().getFullYear()} TaskFlow. All rights reserved.</span>
 
@@ -92,7 +92,7 @@ export default function Footer() {
                         >
                             ♥
                         </motion.span>
-                        <a href="https://wajahat-kamal.vercel.app/">by <span className="text-(--color-primary)">Wajahat Kamal</span></a>
+                        <a href="https://wajahat-kamal.vercel.app/">by <span className="text-primary">Wajahat Kamal</span></a>
                     </div>
                 </motion.div>
 

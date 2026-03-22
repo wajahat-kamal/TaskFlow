@@ -8,7 +8,7 @@ import DemoButton from "../resuable/DemoButton";
 export default function HeroSection() {
 
     return (
-        <header className="text-[#F0F4FF] min-h-screen overflow-x-hidden relative flex items-center justify-center bg-[#00030f]">
+        <header className="min-h-screen overflow-x-hidden relative flex items-center justify-center bg-background">
 
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <motion.div
@@ -38,7 +38,7 @@ export default function HeroSection() {
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
-                    className="inline-flex items-center gap-2 bg-(--color-primary)/10 border border-(--color-primary) rounded-full px-4 py-1.5 text-[13px] text-(--color-primary) font-medium mb-6 backdrop-blur-sm"
+                    className="inline-flex items-center gap-2 bg-primary/10 border border-primary rounded-full px-4 py-1.5 text-[13px] text-primary font-medium mb-6 backdrop-blur-sm"
                 >
                     <motion.span
                         animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
@@ -70,7 +70,7 @@ export default function HeroSection() {
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
-                    className="mt-4 text-[#6B7A99] max-w-[520px] leading-[1.8] text-xs sm:text-base"
+                    className="mt-4 text-lightprimary max-w-[520px] leading-[1.8] text-xs sm:text-base"
                 >
                     TaskFlow learns your workflow, auto-assigns priorities, and keeps your
                     team perfectly in sync — so you can focus on what actually matters.
@@ -92,7 +92,7 @@ export default function HeroSection() {
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
-                    className="mt-10 flex items-center gap-3 text-sm text-[#6B7A99]"
+                    className="mt-10 flex items-center gap-3 text-sm text-lightprimary"
                 >
                     <span>
                         Trusted by <span className="text-[#F0F4FF] font-semibold">12,000+</span> teams worldwide
