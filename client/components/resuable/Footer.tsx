@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { links } from "@/data/generalData";
+import { fadeUp } from "./FadeUpAnimation";
 
 export default function Footer() {
     return (
@@ -17,7 +18,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
                     {/* Brand col */}
                     <motion.div
-                        // variants={fadeUp}
+                        variants={fadeUp}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
@@ -43,7 +44,7 @@ export default function Footer() {
                     {Object.entries(links).map(([category, items], ci) => (
                         <motion.div
                             key={category}
-                            // variants={fadeUp}
+                            variants={fadeUp}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true }}
@@ -74,7 +75,7 @@ export default function Footer() {
 
                 {/* Bottom row */}
                 <motion.div
-                    // variants={fadeUp}
+                    variants={fadeUp}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
