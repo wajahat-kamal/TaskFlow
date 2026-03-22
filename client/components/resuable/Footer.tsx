@@ -8,15 +8,15 @@ export default function Footer() {
     return (
         <footer className="relative bg-transparent text-[#F0F4FF] overflow-hidden pt-20 pb-10 px-6">
 
-            {/* Top divider */}
             <div
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-0.5 opacity-20"
                 style={{ background: "linear-gradient(90deg, transparent, #4f7eff, transparent)" }}
             />
+
             <div className="relative z-10 max-w-6xl mx-auto">
-                {/* Top row */}
+
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
-                    {/* Brand col */}
+
                     <motion.div
                         variants={fadeUp}
                         initial="hidden"
@@ -25,13 +25,12 @@ export default function Footer() {
                         custom={0}
                         className="md:col-span-2 flex flex-col gap-5"
                     >
-                        {/* Logo */}
                         <div className="flex items-center gap-2">
                             <div className="w-8 h-8 rounded-lg bg-(--color-primary)/20 border border-(--color-primary)/40 flex items-center justify-center">
                                 <Sparkles size={14} className="text-(--color-primary)" />
                             </div>
                             <span className="text-xl font-extrabold tracking-widest text-[#F0F4FF]">
-                                TASKIFY
+                                TaskFlow
                             </span>
                         </div>
 
@@ -82,7 +81,7 @@ export default function Footer() {
                     custom={0.3}
                     className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#6B7A99]"
                 >
-                    <span>© {new Date().getFullYear()} Taskify. All rights reserved.</span>
+                    <span>© {new Date().getFullYear()} TaskFlow. All rights reserved.</span>
 
                     <div className="flex items-center gap-1.5">
                         <span>Built with</span>
