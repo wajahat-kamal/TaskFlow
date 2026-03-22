@@ -17,12 +17,12 @@ function DemoButton() {
                         style: {
                             background: "#0a0f1e",
                             border: "1px solid rgba(79,126,255,0.3)",
-                            color: "(--color-primary)",
+                            color: "primary",
                             borderRadius: "12px",
                         },
                     })
                 }
-                className="cursor-pointer flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#4f7eff]/40 text-[#F0F4FF] font-medium px-8 py-3.5 rounded-xl text-[15px] transition-colors duration-300 backdrop-blur-sm"
+                className="cursor-pointer flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/40 text-[#F0F4FF] font-medium px-8 py-3.5 rounded-xl text-[15px] transition-colors duration-300 backdrop-blur-sm"
             >
                 <motion.span
                     animate={{ scale: [1, 1.15, 1] }}
