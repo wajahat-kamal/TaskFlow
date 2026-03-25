@@ -1,6 +1,12 @@
-import React from 'react'
+import { StatsType } from '@/types/DashboardTypes'
+import React, { useState } from 'react'
 
 function Stats() {
+    const [stats, setStats] = useState<StatsType>({
+        totalTasks: 0,
+        pendingTasks: 0,
+        completedTasks: 0
+    })
     return (
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8 stagger">
             {/* Circular progress */}
