@@ -5,7 +5,7 @@ import React from 'react'
 function DashboardHeader() {
     const user = { _id: "lojdpijwrpij", name: "Wajahat Kamal", email: "wk@ex.com" }
     return (
-        <header className="flex items-center justify-between md:mb-10 mb-4">
+        <header className="flex items-center justify-between mb-4">
 
             <div className="flex flex-col gap-0.5">
                 <p className="text-[10px] sm:text-xs font-medium text-slate-500 uppercase tracking-widest">
