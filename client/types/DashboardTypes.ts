@@ -1,7 +1,6 @@
-
-
-export interface StatsType {
-    totalTasks: number
-    pendingTasks: number
-    completedTasks: number
+export interface StatsData {
+    title: string,
+    numbers: number,
+    para: string,
+    numColor: string
 }

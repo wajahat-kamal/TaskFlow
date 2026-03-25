@@ -5,7 +5,7 @@ function Stats() {
 
     return (
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8 stagger">
-            {/* Circular progress */}
+            
             <div className="bg-[#13141d] border border-white/5 rounded-2xl p-5 flex items-center gap-4">
                 <div className="relative w-14 h-14 shrink-0">
                     <svg width="56" height="56" className="progress-ring">
