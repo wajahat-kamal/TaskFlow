@@ -7,7 +7,7 @@ import React from 'react'
 function Dashboard() {
     return (
         <div className="bg-background min-h-screen text-white">
-            <DashboardSidebar />
+            {/* <DashboardSidebar /> */}
             <main className='ml-8 md:ml-16 p-8'>
                 <DashboardHeader />
                 <Stats />
