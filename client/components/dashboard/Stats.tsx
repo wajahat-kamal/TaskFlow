@@ -1,4 +1,4 @@
-import statsData from "@/services/DashboardStats"
+import statsData from "@/lib/DashboardStats"
 import react from "react"
 
 function Stats() {

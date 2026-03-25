@@ -1,3 +1,4 @@
+"use client"
 import { StatsType } from "@/types/DashboardTypes"
 import { useState } from "react"
 
