@@ -1,20 +1,11 @@
+import { formatDate, isOverDue } from '@/lib/TaskCardFunctions';
 import { Priority } from '@/types/DashboardTypes';
 import { Task } from '@/types/Task';
 import { Calendar, CheckCircle2, Circle, Flag } from 'lucide-react'
 
 
-
-
-function isOverdue(dueDate: string) {
-    return new Date(dueDate) < new Date()
-}
-
-function formatDate(dueDate: string) {
-    return new Date(dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-}
-
 export function TaskCard({ task }: { task: Task }) {
-    const overdue = !task.completed && isOverdue(task.dueDate)
+    const overdue = !task.completed && isOverDue(task.dueDate)
 
     return (
         <div className={`
