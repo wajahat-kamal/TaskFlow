@@ -2,10 +2,11 @@ import { User } from '@/types/User'
 import { Plus } from 'lucide-react'
 import React from 'react'
 
-function DashboardHeader({ user }: { user: User }) {
+function DashboardHeader() {
+    const user = { _id: "lojdpijwrpij", name: "Wajahat Kamal", email: "wk@ex.com" }
     return (
         <header className="flex items-center justify-between mb-10">
-            
+
             <div className="flex flex-col gap-0.5">
                 <p className="text-xs font-medium text-slate-500 uppercase tracking-widest">
                     {new Date().toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" })}
