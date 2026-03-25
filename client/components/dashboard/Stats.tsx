@@ -1,12 +1,8 @@
-import { StatsType } from '@/types/DashboardTypes'
-import React, { useState } from 'react'
+import statsData from "@/services/DashboardStats"
+import react from "react"
 
 function Stats() {
-    const [stats, setStats] = useState<StatsType>({
-        totalTasks: 0,
-        pendingTasks: 0,
-        completedTasks: 0
-    })
+
     return (
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8 stagger">
             {/* Circular progress */}
@@ -29,12 +25,7 @@ function Stats() {
                 </div>
             </div>
 
-            {[
-                { title: "Total", numbers: stats.totalTasks, para: "all tasks", numColor: "text-white" },
-                { title: "Pending", numbers: stats.pendingTasks, para: "not completed", numColor: "text-amber-400" },
-                { title: "Completed", numbers: stats.completedTasks, para: "completed", numColor: "text-green-400" },
-                { title: "Overdue", numbers: 4, para: "past due date", numColor: "text-rose-400" },
-            ].map((item) => (
+            {statsData.map((item) => (
                 <div key={item.title} className="bg-[#13141d] border border-white/5 rounded-2xl p-5">
                     <p className="text-slate-500 text-xs uppercase tracking-wider mb-2">{item.title}</p>
                     <p className={`text-3xl font-bold ${item.numColor}`}>{item.numbers}</p>
