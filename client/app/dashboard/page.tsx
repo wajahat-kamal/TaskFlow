@@ -6,13 +6,13 @@ import React from 'react'
 
 function Dashboard() {
     return (
-        <div className="bg-background min-h-screen text-white">
+        <div className="bg-background min-h-screen text-white p-4 sm:p-8">
             {/* <DashboardSidebar /> */}
-            <main className='ml-8 md:ml-16 p-8'>
+            {/* <main className='ml-8 md:ml-16 p-8'> */}
                 <DashboardHeader />
                 <Stats />
                 <Filters />
-            </main>
+            {/* </main> */}
         </div>
     )
 }
