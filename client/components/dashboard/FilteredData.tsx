@@ -1,11 +1,18 @@
 "use client"
 import React, { useState } from 'react'
 import { Search } from 'lucide-react'
+import { tasks } from '@/data/tasksDumydata';
+import { TaskCard } from './TaskCard';
 
-function Filters() {
+function FilteredData() {
     const [search, setSearch] = useState("")
     const [filterCompleted, setFilterCompleted] = useState<"all" | "pending" | "completed">("all");
     const [filterPriority, setFilterPriority] = useState<"all" | "high" | "medium" | "low">("all");
+
+    const filteresData = tasks.filter((task) => {
+        const searchData = task.title.toLowerCase().includes(search.toLowerCase()) && task.description.toLowerCase().includes(search.toLowerCase())
+        return searchData
+    })
 
     return (
         <div className="flex flex-wrap items-center gap-2 mb-5">
@@ -58,8 +65,14 @@ function Filters() {
                     </button>
                 ))}
             </div>
+
+            <div className="w-full grid grid-cols-4 gap-2.5">
+                {filteresData.map((task, i) => (
+                    <TaskCard key={i} task={task} />
+                ))}
+            </div>
         </div>
     )
 }
 
-export default Filters
+export default FilteredData
