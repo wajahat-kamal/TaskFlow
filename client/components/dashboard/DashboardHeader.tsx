@@ -5,7 +5,7 @@ import React from 'react'
 function DashboardHeader({ user }: { user: User }) {
     return (
         <header className="flex items-center justify-between mb-10">
-            {/* Left — greeting */}
+            
             <div className="flex flex-col gap-0.5">
                 <p className="text-xs font-medium text-slate-500 uppercase tracking-widest">
                     {new Date().toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" })}
@@ -15,7 +15,6 @@ function DashboardHeader({ user }: { user: User }) {
                 </h1>
             </div>
 
-            {/* Right — actions */}
             <div className="flex items-center gap-3">
                 <button className="flex items-center gap-2 px-4 py-3 rounded-xl font-medium text-sm text-white
       bg-primary/90 hover:bg-primary active:scale-95
