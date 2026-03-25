@@ -5,13 +5,13 @@ import React from 'react'
 function DashboardHeader() {
     const user = { _id: "lojdpijwrpij", name: "Wajahat Kamal", email: "wk@ex.com" }
     return (
-        <header className="flex items-center justify-between mb-10">
+        <header className="flex items-center justify-between md:mb-10 mb-4">
 
             <div className="flex flex-col gap-0.5">
-                <p className="text-xs font-medium text-slate-500 uppercase tracking-widest">
+                <p className="text-[10px] sm:text-xs font-medium text-slate-500 uppercase tracking-widest">
                     {new Date().toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" })}
                 </p>
-                <h1 className="text-2xl font-semibold text-white leading-tight tracking-tight">
+                <h1 className="text-lg sm:text-2xl font-semibold text-white leading-tight tracking-tight">
                     Welcome back, <span className="text-indigo-400">{user?.name ?? "User"}</span> 👋
                 </h1>
             </div>
