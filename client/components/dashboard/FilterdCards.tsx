@@ -15,17 +15,6 @@ export function TaskCard({ task }: { task: Task }) {
             transition-all duration-200
             ${task.completed ? 'opacity-50' : ''}
         `}>
-            {/* Checkbox */}
-            {/* <button
-                className="mt-0.5 shrink-0 text-slate-500 hover:text-indigo-400 transition-colors duration-150 cursor-pointer"
-            >
-                {task.completed
-                    ? <CheckCircle2 size={20} className="text-indigo-400" />
-                    : <Circle size={20} />
-                }
-            </button> */}
-
-            {/* Content */}
             <div className="flex flex-col gap-1.5 flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-3">
                     <h3 className={`text-sm font-semibold leading-snug tracking-tight
@@ -33,7 +22,6 @@ export function TaskCard({ task }: { task: Task }) {
                         {task.title}
                     </h3>
 
-                    {/* Priority badge */}
                     <span className={`shrink-0 flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-semibold uppercase tracking-wider 
                        ${task.priority === 'high'
                             ? 'text-rose-400 bg-rose-500/10'
@@ -52,11 +40,20 @@ export function TaskCard({ task }: { task: Task }) {
                     </p>
                 )}
 
-                {/* Due date */}
-                <div className={`flex items-center gap-1.5 mt-1 text-[11px] font-medium
+                <div className='w-full flex justify-between items-center'>
+                    <div className={`flex items-center gap-1.5 mt-1 text-[11px] font-medium
                     ${overdue ? 'text-rose-400' : 'text-slate-500'}`}>
-                    <Calendar size={11} />
-                    <span>{overdue ? 'Overdue · ' : ''}{formatDate(task.dueDate)}</span>
+                        <Calendar size={11} />
+                        <span>{overdue ? 'Overdue · ' : ''}{formatDate(task.dueDate)}</span>
+                    </div>
+                    <button
+                        className="mt-0.5 shrink-0 text-slate-500 hover:text-indigo-400 transition-colors duration-150 cursor-pointer"
+                    >
+                        {task.completed
+                            ? <CheckCircle2 size={20} className="text-indigo-400" />
+                            : <Circle size={20} />
+                        }
+                    </button>
                 </div>
             </div>
         </div>
@@ -111,7 +108,6 @@ export default function FilterdCards() {
     ]
 
     return (
-
         <div className="w-full grid grid-cols-4 gap-2.5">
             {tasks.map((task, i) => (
                 <TaskCard key={i} task={task} />
