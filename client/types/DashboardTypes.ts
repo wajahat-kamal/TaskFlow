@@ -4,3 +4,5 @@ export interface StatsData {
     para: string,
     numColor: string
 }
+
+export type Priority = 'low' | 'medium' | 'high'

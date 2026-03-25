@@ -1,19 +1,12 @@
+import { Priority } from '@/types/DashboardTypes';
+import { Task } from '@/types/Task';
 import { Calendar, CheckCircle2, Circle, Flag } from 'lucide-react'
 
-type Priority = 'low' | 'medium' | 'high'
 
-interface Task {
-    title: string
-    description: string
-    priority: Priority
-    completed: boolean
-    dueDate: string
-}
-
-const priorityConfig: Record<Priority, { label: string; className: string; dot: string }> = {
-    low: { label: 'Low', className: 'text-emerald-400 bg-emerald-500/10 ring-1 ring-emerald-500/20', dot: 'bg-emerald-400' },
-    medium: { label: 'Medium', className: 'text-amber-400  bg-amber-500/10  ring-1 ring-amber-500/20', dot: 'bg-amber-400' },
-    high: { label: 'High', className: 'text-rose-400   bg-rose-500/10   ring-1 ring-rose-500/20', dot: 'bg-rose-400' },
+const priorityConfig = {
+    low: { label: 'Low', className: 'text-emerald-400 bg-emerald-500/10 ring-1 ring-emerald-500/20', },
+    medium: { label: 'Medium', className: 'text-amber-400  bg-amber-500/10  ring-1 ring-amber-500/20', },
+    high: { label: 'High', className: 'text-rose-400   bg-rose-500/10   ring-1 ring-rose-500/20', },
 }
 
 function isOverdue(dueDate: string) {
@@ -26,35 +19,29 @@ function formatDate(dueDate: string) {
 
 interface TaskCardProps {
     task: Task
-    onToggle?: () => void
 }
 
-export function TaskCard({ task, onToggle }: TaskCardProps) {
+export function TaskCard({ task }: TaskCardProps) {
     const priority = priorityConfig[task.priority]
     const overdue = !task.completed && isOverdue(task.dueDate)
 
     return (
         <div className={`
-            group relative flex gap-4 p-4 rounded-2xl
+            group relative flex gap-4 p-4 rounded
             bg-white/3 hover:bg-white/6
             ring-1 ${task.completed ? 'ring-white/4' : 'ring-white/8'}
             transition-all duration-200
             ${task.completed ? 'opacity-50' : ''}
         `}>
-
-            {/* Priority left-border accent */}
-            <div className={`absolute left-0 top-4 bottom-4 w-[3px] rounded-full ${priority.dot} ${task.completed ? 'opacity-30' : 'opacity-70'}`} />
-
             {/* Checkbox */}
-            <button
-                onClick={onToggle}
+            {/* <button
                 className="mt-0.5 shrink-0 text-slate-500 hover:text-indigo-400 transition-colors duration-150 cursor-pointer"
             >
                 {task.completed
                     ? <CheckCircle2 size={20} className="text-indigo-400" />
                     : <Circle size={20} />
                 }
-            </button>
+            </button> */}
 
             {/* Content */}
             <div className="flex flex-col gap-1.5 flex-1 min-w-0">
