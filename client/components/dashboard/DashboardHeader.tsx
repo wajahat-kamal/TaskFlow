@@ -1,5 +1,6 @@
 import { Plus } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function DashboardHeader() {
@@ -9,7 +10,7 @@ function DashboardHeader() {
         <header className="flex items-center justify-between pb-2 mb-2 sm:pb-4 sm:mb-4 border-b border-white/6">
 
             <div className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-2xl overflow-hidden ring-1 ring-white/10 shrink-0">
+                <Link href="/" className="w-11 h-11 rounded-2xl overflow-hidden ring-1 ring-white/10 shrink-0">
                     <Image
                         src="/logo.png"
                         alt="logo"
@@ -17,7 +18,7 @@ function DashboardHeader() {
                         height={44}
                         className="object-cover w-full h-full"
                     />
-                </div>
+                </Link>
 
                 <div className="flex flex-col gap-0.5">
                     <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-[0.18em]">
@@ -28,7 +29,7 @@ function DashboardHeader() {
                         })}
                     </p>
                     <h1 className="text-base sm:text-xl font-semibold text-white/90 leading-snug tracking-tight">
-                        Welcome back,{' '}
+                        Welcome back, <br className='md:hidden block'/>
                         <span className="text-primary">
                             {user?.name ?? "User"}
                         </span>{' '}👋

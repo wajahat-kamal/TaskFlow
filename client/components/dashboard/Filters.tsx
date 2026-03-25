@@ -18,7 +18,7 @@ function Filters() {
                     placeholder="Search tasks..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full bg-white/3 border border-white/6 rounded-xl pl-9 pr-4 py-2.5
+                    className="w-full bg-[#13141d] border border-white/6 rounded pl-9 pr-4 py-2.5
                                text-sm text-white/80 placeholder-slate-600
                                focus:outline-none focus:border-indigo-500/40 focus:bg-white/5
                                transition-colors duration-150"
@@ -26,14 +26,14 @@ function Filters() {
             </div>
 
             {/* Completion filter */}
-            <div className="flex gap-1 bg-white/3 border border-white/6 rounded-xl p-1">
+            <div className="flex gap-1 bg-[#13141d] border border-white/6 rounded p-1">
                 {(["all", "pending", "completed"] as const).map((item) => (
                     <button
                         key={item}
                         onClick={() => setFilterCompleted(item)}
-                        className={`cursor-pointer px-3 py-1.5 rounded-lg text-sm font-medium capitalize transition-all duration-150
+                        className={`cursor-pointer px-5 md:px-3 py-1.5 rounded text-sm font-medium capitalize transition-all duration-150
                             ${filterCompleted === item
-                                ? "bg-indigo-500/20 text-indigo-300 ring-1 ring-indigo-500/30"
+                                ? "bg-primary"
                                 : "text-slate-500 hover:text-slate-300"
                             }`}
                     >
@@ -43,14 +43,14 @@ function Filters() {
             </div>
 
             {/* Priority filter */}
-            <div className="flex gap-1 bg-white/[0.03] border border-white/[0.06] rounded-xl p-1">
+            <div className="flex gap-1 bg-white/3 border border-white/6 rounded p-1">
                 {(["all", "high", "medium", "low"] as const).map((item) => (
                     <button
                         key={item}
                         onClick={() => setFilterPriority(item)}
-                        className={`cursor-pointer px-3 py-1.5 rounded-lg text-[10px] md:text-sm font-medium capitalize transition-all duration-150
+                        className={`cursor-pointer px-4 md:px-3 py-1.5 rounded text-[11px] md:text-sm font-medium capitalize transition-all duration-150
                             ${filterPriority === item
-                                ? "bg-indigo-500/20 text-indigo-300 ring-1 ring-indigo-500/30"
+                                ? "bg-primary"
                                 : "text-slate-500 hover:text-slate-300"
                             }`}
                     >
