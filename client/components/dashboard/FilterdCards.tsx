@@ -3,11 +3,7 @@ import { Task } from '@/types/Task';
 import { Calendar, CheckCircle2, Circle, Flag } from 'lucide-react'
 
 
-const priorityConfig = {
-    low: { label: 'Low', className: 'text-emerald-400 bg-emerald-500/10 ring-1 ring-emerald-500/20', },
-    medium: { label: 'Medium', className: 'text-amber-400  bg-amber-500/10  ring-1 ring-amber-500/20', },
-    high: { label: 'High', className: 'text-rose-400   bg-rose-500/10   ring-1 ring-rose-500/20', },
-}
+
 
 function isOverdue(dueDate: string) {
     return new Date(dueDate) < new Date()
@@ -17,12 +13,7 @@ function formatDate(dueDate: string) {
     return new Date(dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
-interface TaskCardProps {
-    task: Task
-}
-
-export function TaskCard({ task }: TaskCardProps) {
-    const priority = priorityConfig[task.priority]
+export function TaskCard({ task }: { task: Task }) {
     const overdue = !task.completed && isOverdue(task.dueDate)
 
     return (
@@ -52,9 +43,15 @@ export function TaskCard({ task }: TaskCardProps) {
                     </h3>
 
                     {/* Priority badge */}
-                    <span className={`shrink-0 flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-semibold uppercase tracking-wider ${priority.className}`}>
+                    <span className={`shrink-0 flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-semibold uppercase tracking-wider 
+                       ${task.priority === 'high'
+                            ? 'text-rose-400 bg-rose-500/10'
+                            : task.priority === 'medium'
+                                ? 'text-amber-400 bg-amber-500/10'
+                                : 'text-emerald-400 bg-emerald-500/10'}
+                    `}>
                         <Flag size={9} />
-                        {priority.label}
+                        {task.priority.toUpperCase()}
                     </span>
                 </div>
 
