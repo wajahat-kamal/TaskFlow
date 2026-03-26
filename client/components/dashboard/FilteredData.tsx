@@ -76,7 +76,7 @@ function FilteredData() {
                 ))}
             </div>
 
-            <div className="w-full grid grid-cols-4 gap-2.5 mt-4">
+            <div className="w-full grid grid-cols-4 gap-2.5 mt-3">
                 {filteredData.map((task, i) => (
                     <TaskCard key={i} task={task} />
                 ))}
