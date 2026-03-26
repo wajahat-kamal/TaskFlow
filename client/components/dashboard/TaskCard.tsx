@@ -8,7 +8,7 @@ export function TaskCard({ task }: { task: Task }) {
     return (
         <div className={`
             group relative flex gap-4 p-4 rounded
-            bg-white/3 hover:bg-white/6
+            bg-foreground hover:bg-white/6
             ring-1 ${task.completed ? 'ring-white/4' : 'ring-white/8'}
             transition-all duration-200
             ${task.completed ? 'opacity-50' : ''}

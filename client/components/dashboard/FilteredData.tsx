@@ -16,7 +16,7 @@ function FilteredData() {
 
         const completedData =
             filterCompleted === "pending" ? !task.completed :
-            filterCompleted === "completed" ? task.completed : true
+                filterCompleted === "completed" ? task.completed : true
 
         const priorityData =
             filterPriority === "all" ? true : task.priority === filterPriority
@@ -35,7 +35,7 @@ function FilteredData() {
                     placeholder="Search tasks..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full bg-[#13141d] border border-white/6 rounded pl-9 pr-4 py-2.5
+                    className="w-full bg-foreground border border-white/6 rounded pl-9 pr-4 py-2.5
                                text-sm text-white/80 placeholder-slate-600
                                focus:outline-none focus:border-indigo-500/40 focus:bg-white/5
                                transition-colors duration-150"
@@ -43,7 +43,7 @@ function FilteredData() {
             </div>
 
             {/* Completion filter */}
-            <div className="flex gap-1 bg-[#13141d] border border-white/6 rounded p-1">
+            <div className="flex gap-1 bg-foreground border border-white/6 rounded p-1">
                 {(["all", "pending", "completed"] as const).map((item) => (
                     <button
                         key={item}
@@ -60,7 +60,7 @@ function FilteredData() {
             </div>
 
             {/* Priority filter */}
-            <div className="flex gap-1 bg-white/3 border border-white/6 rounded p-1">
+            <div className="flex gap-1 bg-foreground border border-white/6 rounded p-1">
                 {(["all", "high", "medium", "low"] as const).map((item) => (
                     <button
                         key={item}
@@ -76,7 +76,7 @@ function FilteredData() {
                 ))}
             </div>
 
-            <div className="w-full grid grid-cols-4 gap-2.5">
+            <div className="w-full grid grid-cols-4 gap-2.5 mt-4">
                 {filteredData.map((task, i) => (
                     <TaskCard key={i} task={task} />
                 ))}
