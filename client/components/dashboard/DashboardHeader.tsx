@@ -1,5 +1,5 @@
 "use client"
-import { useUser } from '@clerk/nextjs'
+import { UserButton, useUser } from '@clerk/nextjs'
 import { Plus } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -39,7 +39,7 @@ function DashboardHeader() {
                 </div>
             </div>
 
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-3">
                 <button
                     className="group flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-medium
                                text-white bg-primary hover:bg-indigo-500/30
@@ -49,6 +49,8 @@ function DashboardHeader() {
                     <Plus size={15} />
                     <span className="hidden md:inline">Create Task</span>
                 </button>
+
+                <UserButton />
             </div>
         </header>
     )

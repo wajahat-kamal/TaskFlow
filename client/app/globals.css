@@ -15,3 +15,8 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.cl-avatarBox {
+  width: 2.5rem; /* Example size */
+  height: 2.5rem; /* Example size */
+}
