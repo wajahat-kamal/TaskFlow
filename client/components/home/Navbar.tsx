@@ -8,21 +8,10 @@ import { nav_items } from '@/data/generalData';
 import Link from 'next/link';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-
-
-    async function logoutHandler() {
-        try {
-            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`)
-            if (data.success) {
-                toast.success(data.message)
-            }
-        } catch (error: any) {
-            toast.error(error?.message)
-        }
-    }
 
     return (
         <motion.nav
@@ -33,7 +22,7 @@ function Navbar() {
             className="shadow-md  w-full absolute top-0 right-0 z-50">
             {/* Desktop Navbar */}
             <div className="max-w-7xl md:px-24 px-6 py-4 flex items-center justify-between">
-                
+
                 <Link href="/" className="text-primary text-2xl font-extrabold tracking-widest flex justify-center items-center gap-2">
                     <Image src="/logo.png" width={40} height={40} className='rounded' alt="logo" />
                     TaskFlow
@@ -52,23 +41,19 @@ function Navbar() {
                     ))}
                 </ul>
 
-                {false ? (
-                    <button
-                        onClick={logoutHandler}
-                        className="hidden md:inline-block bg-primary text-white px-5 py-2 rounded-full border-2 hover:text-primary hover:bg-background border-primary transition"
-                    >
-                        Logout
-                    </button>
-                ) : (
-
-                    <Link
-                        href="/auth/login"
-                        className="hidden md:inline-block bg-primary text-white px-5 py-2 rounded-full border-2 hover:text-primary) hover:bg-background border-primary transition"
-                    >
-                        Login
-                    </Link>
-
-                )}
+                <div className="flex justify-end items-center p-4 gap-4 h-16">
+                    <Show when="signed-out">
+                        <SignInButton />
+                        <SignUpButton>
+                            <button className="hidden md:inline-block bg-primary text-white px-4 py-1.5 rounded-full border-2 hover:text-primary) hover:bg-background border-primary transition" >
+                                Sign Up
+                            </button>
+                        </SignUpButton>
+                    </Show>
+                    <Show when="signed-in">
+                        <UserButton />
+                    </Show>
+                </div>
 
                 {/* Mobile Menu Toggle */}
                 <button
