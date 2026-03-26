@@ -9,9 +9,19 @@ function FilteredData() {
     const [filterCompleted, setFilterCompleted] = useState<"all" | "pending" | "completed">("all");
     const [filterPriority, setFilterPriority] = useState<"all" | "high" | "medium" | "low">("all");
 
-    const filteresData = tasks.filter((task) => {
-        const searchData = task.title.toLowerCase().includes(search.toLowerCase()) && task.description.toLowerCase().includes(search.toLowerCase())
-        return searchData
+    const filteredData = tasks.filter((task) => {
+        const searchData =
+            task.title.toLowerCase().includes(search.toLowerCase()) ||
+            task.description.toLowerCase().includes(search.toLowerCase())
+
+        const completedData =
+            filterCompleted === "pending" ? !task.completed :
+            filterCompleted === "completed" ? task.completed : true
+
+        const priorityData =
+            filterPriority === "all" ? true : task.priority === filterPriority
+
+        return searchData && completedData && priorityData
     })
 
     return (
@@ -67,7 +77,7 @@ function FilteredData() {
             </div>
 
             <div className="w-full grid grid-cols-4 gap-2.5">
-                {filteresData.map((task, i) => (
+                {filteredData.map((task, i) => (
                     <TaskCard key={i} task={task} />
                 ))}
             </div>
