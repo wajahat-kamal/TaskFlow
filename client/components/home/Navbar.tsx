@@ -1,14 +1,11 @@
 "use client"
-
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { nav_items } from '@/data/generalData';
 import Link from 'next/link';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
+import { Show, SignInButton, SignUpButton } from '@clerk/nextjs';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +48,9 @@ function Navbar() {
                         </SignUpButton>
                     </Show>
                     <Show when="signed-in">
-                        <UserButton />
+                        <Link href="/dashboard" className="hidden md:inline-block cursor-pointer bg-primary text-white px-4 py-1.5 rounded-full border-2 hover:text-primary) hover:bg-background border-primary transition" >
+                            Dashboard
+                        </Link>
                     </Show>
                 </div>
 
