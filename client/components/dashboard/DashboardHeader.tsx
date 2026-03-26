@@ -1,5 +1,4 @@
 "use client"
-import { User } from '@/types/User'
 import { useUser } from '@clerk/nextjs'
 import { Plus } from 'lucide-react'
 import Image from 'next/image'
