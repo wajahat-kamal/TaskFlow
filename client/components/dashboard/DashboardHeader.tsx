@@ -1,10 +1,13 @@
+"use client"
+import { User } from '@/types/User'
+import { useUser } from '@clerk/nextjs'
 import { Plus } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 function DashboardHeader() {
-    const user = { _id: "lojdpijwrpij", name: "Wajahat Kamal", email: "wk@ex.com" }
+    const { user } = useUser()
 
     return (
         <header className="flex items-center justify-between pb-2 mb-2 sm:pb-4 sm:mb-4 border-b border-white/6">
@@ -29,9 +32,9 @@ function DashboardHeader() {
                         })}
                     </p>
                     <h1 className="text-base sm:text-xl font-semibold text-white/90 leading-snug tracking-tight">
-                        Welcome back, <br className='md:hidden block'/>
+                        Welcome back, <br className='md:hidden block' />
                         <span className="text-primary">
-                            {user?.name ?? "User"}
+                            {user?.firstName ?? "User"}
                         </span>{' '}👋
                     </h1>
                 </div>

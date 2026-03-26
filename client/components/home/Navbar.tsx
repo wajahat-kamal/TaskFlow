@@ -45,7 +45,7 @@ function Navbar() {
                     <Show when="signed-out">
                         <SignInButton />
                         <SignUpButton>
-                            <button className="hidden md:inline-block bg-primary text-white px-4 py-1.5 rounded-full border-2 hover:text-primary) hover:bg-background border-primary transition" >
+                            <button className="hidden md:inline-block cursor-pointer bg-primary text-white px-4 py-1.5 rounded-full border-2 hover:text-primary) hover:bg-background border-primary transition" >
                                 Sign Up
                             </button>
                         </SignUpButton>
