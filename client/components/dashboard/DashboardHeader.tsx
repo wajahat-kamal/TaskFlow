@@ -41,7 +41,7 @@ function DashboardHeader() {
 
             <div className="flex items-center gap-3">
                 <button
-                    className="group flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-medium
+                    className="group flex items-center gap-2 p-3 md:px-3.5 md:py-2.5 rounded-2xl md:rounded text-sm font-medium
                                text-white bg-primary hover:bg-indigo-500/30
                                ring-1 ring-indigo-500/30 hover:ring-indigo-400/50
                                transition-all duration-200 active:scale-[0.97] cursor-pointer"
