@@ -1,5 +1,5 @@
 
-export function isOverDue(dueDate: string) {
+export function isOverDue(dueDate: Date) {
     return new Date(dueDate) < new Date()
 }
 

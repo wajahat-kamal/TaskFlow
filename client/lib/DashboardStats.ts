@@ -1,6 +1,9 @@
-import { tasks } from "@/data/tasksDumydata"
 import { StatsData } from "@/types/DashboardTypes"
 import { isOverDue } from "./TaskCardFunctions";
+import { Task } from "@/types/Task";
+import { getTasks } from "./TasksData";
+
+const tasks: Task[] = await getTasks()
 
 const pendingTasks = tasks.filter((task) => !task.completed).length
 const completedTasks = tasks.filter((task) => task.completed).length
