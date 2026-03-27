@@ -1,13 +1,26 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Search } from 'lucide-react'
 import { TaskCard } from './TaskCard';
-import { tasks } from '@/data/tasksDumydata';
+import axios from 'axios';
+import { Task } from '@/types/Task';
 
-async function FilteredData() {
+function FilteredData() {
     const [search, setSearch] = useState("")
     const [filterCompleted, setFilterCompleted] = useState<"all" | "pending" | "completed">("all");
     const [filterPriority, setFilterPriority] = useState<"all" | "high" | "medium" | "low">("all");
+    const [tasks, setTasks] = useState<Task[]>([])
+
+    const getTasks = async () => {
+        const res = await axios.get("http://localhost:3000/api/tasks/get-tasks")
+        if (res.data.success) {
+            setTasks(res.data.tasks)
+        }
+    }
+
+    useEffect(() => {
+        getTasks()
+    }, [])
 
     const filteredData = tasks.filter((task) => {
         const searchData =
