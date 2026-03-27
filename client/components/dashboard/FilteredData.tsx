@@ -1,10 +1,10 @@
 "use client"
 import React, { useState } from 'react'
 import { Search } from 'lucide-react'
-import { tasks } from '@/data/tasksDumydata';
 import { TaskCard } from './TaskCard';
+import { tasks } from '@/data/tasksDumydata';
 
-function FilteredData() {
+async function FilteredData() {
     const [search, setSearch] = useState("")
     const [filterCompleted, setFilterCompleted] = useState<"all" | "pending" | "completed">("all");
     const [filterPriority, setFilterPriority] = useState<"all" | "high" | "medium" | "low">("all");
@@ -12,7 +12,7 @@ function FilteredData() {
     const filteredData = tasks.filter((task) => {
         const searchData =
             task.title.toLowerCase().includes(search.toLowerCase()) ||
-            task.description.toLowerCase().includes(search.toLowerCase())
+            task.description?.toLowerCase().includes(search.toLowerCase())
 
         const completedData =
             filterCompleted === "pending" ? !task.completed :

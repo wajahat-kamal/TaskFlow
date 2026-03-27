@@ -1,9 +1,12 @@
 import { Priority } from "./DashboardTypes"
 
 export interface Task {
-    title: string
-    description: string
-    priority: Priority
-    completed: boolean
-    dueDate: string
+    id: string;
+    userId: string;
+    title: string;
+    description: string | null;
+    completed: boolean;
+    priority: string;
+    dueDate: Date;
+    createdAt: Date;
 }
