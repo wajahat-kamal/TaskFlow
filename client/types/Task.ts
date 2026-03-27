@@ -1,5 +1,3 @@
-import { Priority } from "./DashboardTypes"
-
 export interface Task {
     id: string;
     userId: string;
