@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import { Search } from 'lucide-react'
 import { TaskCard } from './TaskCard';
-import axios from 'axios';
 import { Task } from '@/types/Task';
+import { getTasks } from '@/lib/TasksData';
 
 function FilteredData() {
     const [search, setSearch] = useState("")
@@ -11,15 +11,8 @@ function FilteredData() {
     const [filterPriority, setFilterPriority] = useState<"all" | "high" | "medium" | "low">("all");
     const [tasks, setTasks] = useState<Task[]>([])
 
-    const getTasks = async () => {
-        const res = await axios.get("http://localhost:3000/api/tasks/get-tasks")
-        if (res.data.success) {
-            setTasks(res.data.tasks)
-        }
-    }
-
     useEffect(() => {
-        getTasks()
+        getTasks().then(setTasks)
     }, [])
 
     const filteredData = tasks.filter((task) => {
