@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Search } from 'lucide-react'
 import { TaskCard } from './TaskCard';
 import { Task } from '@/types/Task';
-import { getTasks } from '@/lib/TasksData';
+import { getTasks } from '@/lib/tasks-data';
 
 function FilteredData() {
     const [search, setSearch] = useState("")

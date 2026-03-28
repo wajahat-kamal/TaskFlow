@@ -1,7 +1,7 @@
 import { StatsData } from "@/types/DashboardTypes"
 import { isOverDue } from "./TaskCardFunctions";
 import { Task } from "@/types/Task";
-import { getTasks } from "./TasksData";
+import { getTasks } from "./tasks-data";
 
 const tasks: Task[] = await getTasks()
 
