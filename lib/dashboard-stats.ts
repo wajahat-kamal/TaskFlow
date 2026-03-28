@@ -1,4 +1,4 @@
-import { StatsData } from "@/types/DashboardTypes"
+import { StatsData } from "@/types/DashboardStats"
 import { isOverDue } from "./task-card-functions";
 import { Task } from "@/types/Task";
 import { getTasks } from "./tasks-data";
