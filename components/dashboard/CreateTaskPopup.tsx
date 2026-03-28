@@ -45,14 +45,14 @@ function CreateTaskPopup() {
             onClick={(e) => e.target === e.currentTarget && toggleCreateTaskPopup()}
             className="fixed inset-0 z-30 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4"
         >
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-6">
+            <div className="w-full max-w-md rounded-2xl shadow-2xl p-6 bg-foreground">
 
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-base font-semibold text-gray-900">New Task</h2>
+                    <h2 className="text-md font-semibold text-white">New Task</h2>
                     <button
                         onClick={toggleCreateTaskPopup}
-                        className="p-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-500 transition-colors"
+                        className="p-1.5 cursor-pointer rounded-lg bg-gray-100 hover:bg-gray-200 text-lightprimary transition-colors"
                     >
                         <X size={15} />
                     </button>
@@ -70,7 +70,7 @@ function CreateTaskPopup() {
                             value={taskData.title}
                             onChange={onChange}
                             required
-                            className="w-full text-sm font-medium text-gray-900 placeholder:text-gray-300 outline-none bg-transparent"
+                            className="w-full text-sm font-medium text-gray-300 placeholder:text-gray-300 outline-none bg-transparent"
                         />
                     </div>
 
@@ -83,13 +83,13 @@ function CreateTaskPopup() {
                             value={taskData.description}
                             onChange={onChange}
                             rows={2}
-                            className="w-full text-sm text-gray-700 placeholder:text-gray-300 outline-none bg-transparent resize-none"
+                            className="w-full text-sm text-gray-300 placeholder:text-gray-300 outline-none bg-transparent resize-none"
                         />
                     </div>
 
                     {/* Priority */}
                     <div className="flex items-center gap-3 py-3 border-b border-gray-100">
-                        <Flag size={15} className="text-gray-300 shrink-0" />
+                        <Flag size={15} className="text- shrink-0" />
                         <div className="flex gap-2">
                             {([
                                 { value: 'high', label: 'High', active: 'bg-red-500 text-white border-red-500', inactive: 'text-red-500 border-red-300 hover:bg-red-50' },
@@ -116,7 +116,7 @@ function CreateTaskPopup() {
                             name="dueDate"
                             value={taskData.dueDate}
                             onChange={onChange}
-                            className="w-full text-sm text-gray-700 outline-none bg-transparent"
+                            className="w-full text-sm text-gray-300 outline-none bg-transparent"
                         />
                     </div>
 
@@ -124,7 +124,7 @@ function CreateTaskPopup() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full mt-4 py-2.5 rounded-xl bg-gray-900 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium transition-colors"
+                        className="w-full mt-4 py-2.5 rounded-xl bg-primary hover:bg-indigo-500/30 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium transition-colors"
                     >
                         {loading ? 'Creating...' : 'Create Task'}
                     </button>
