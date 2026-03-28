@@ -3,10 +3,11 @@ import { UserButton, useUser } from '@clerk/nextjs'
 import { Plus } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 function DashboardHeader() {
     const { user } = useUser()
+    const [createTaskPopupOpen, setCreateTaskPopupOpen] = useState(false);
 
     return (
         <header className="flex items-center justify-between pb-2 mb-2 sm:pb-4 sm:mb-4 border-b border-white/6">
@@ -41,6 +42,7 @@ function DashboardHeader() {
 
             <div className="flex items-center gap-3">
                 <button
+                    onClick={() => setCreateTaskPopupOpen(true)}
                     className="group flex items-center gap-2 p-3 md:px-3.5 md:py-2.5 rounded-2xl md:rounded text-sm font-medium
                                text-white bg-primary hover:bg-indigo-500/30
                                ring-1 ring-indigo-500/30 hover:ring-indigo-400/50
