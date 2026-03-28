@@ -6,10 +6,8 @@ interface StoreState {
 }
 
 const useStore = create<StoreState>((set, get) => ({
-    createTaskPopup: true,
+    createTaskPopup: false,
     toggleCreateTaskPopup: () => set({ createTaskPopup: !get().createTaskPopup }),
 }))
 
-// export const isCreateTaskPopupOpen = useStore((state) => state.createTaskPopup)
-// export const toggleCreateTaskPopup = useStore((state) => state.toggleCreateTaskPopup)
 export default useStore;
