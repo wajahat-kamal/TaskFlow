@@ -1,4 +1,4 @@
-import { formatDate, isOverDue } from '@/lib/TaskCardFunctions';
+import { formatDate, isOverDue } from '@/lib/task-card-functions';
 import { Task } from '@/types/Task';
 import { Calendar, CheckCircle2, Circle, Flag } from 'lucide-react'
 
