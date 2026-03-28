@@ -1,12 +1,13 @@
 "use client"
-import useStore from '@/store/store';
+import { useIsCreateTaskPopupOpen, useIsLoading, useTaskUIActions } from '@/store/store';
 import axios from 'axios';
 import { X, AlignLeft, Flag, Calendar, Type } from 'lucide-react';
 import React, { useState } from 'react'
 
 function CreateTaskPopup() {
-    const isCreateTaskPopupOpen = useStore((state) => state.createTaskPopup)
-    const toggleCreateTaskPopup = useStore((state) => state.toggleCreateTaskPopup)
+    const { toggleCreateTaskPopup, setIsLoading } = useTaskUIActions()
+    const isOpen = useIsCreateTaskPopupOpen()
+    const isLoading = useIsLoading()
 
     const [taskData, setTaskData] = useState({
         title: "",
@@ -14,9 +15,8 @@ function CreateTaskPopup() {
         priority: "medium",
         dueDate: "",
     })
-    const [loading, setLoading] = useState(false)
 
-    if (!isCreateTaskPopupOpen) return null
+    if (!isOpen) return null
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target
@@ -27,7 +27,7 @@ function CreateTaskPopup() {
         e.preventDefault()
         if (!taskData.title.trim()) return
         try {
-            setLoading(true)
+            setIsLoading(true)
             const { data } = await axios.post('/api/tasks/create-task', taskData)
             if (data.success) {
                 toggleCreateTaskPopup()
@@ -36,7 +36,7 @@ function CreateTaskPopup() {
         } catch (error) {
             console.log("Task creating error", error)
         } finally {
-            setLoading(false)
+            setIsLoading(false)
         }
     }
 
@@ -123,10 +123,10 @@ function CreateTaskPopup() {
                     {/* Submit */}
                     <button
                         type="submit"
-                        disabled={loading}
+                        disabled={isLoading}
                         className="w-full mt-4 py-2.5 rounded-xl bg-primary hover:bg-indigo-500/30 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium transition-colors"
                     >
-                        {loading ? 'Creating...' : 'Create Task'}
+                        {isLoading ? 'Creating...' : 'Create Task'}
                     </button>
 
                 </form>
