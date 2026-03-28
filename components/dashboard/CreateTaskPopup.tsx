@@ -1,7 +1,7 @@
 "use client"
 import useStore from '@/store/store';
 import axios from 'axios';
-import { X } from 'lucide-react';
+import { X, AlignLeft, Flag, Calendar, Type } from 'lucide-react';
 import React, { useState } from 'react'
 
 function CreateTaskPopup() {
@@ -11,56 +11,124 @@ function CreateTaskPopup() {
     const [taskData, setTaskData] = useState({
         title: "",
         description: "",
-        priority: "",
+        priority: "medium",
         dueDate: "",
     })
+    const [loading, setLoading] = useState(false)
 
-    if (!isCreateTaskPopupOpen) return;
+    if (!isCreateTaskPopupOpen) return null
 
-    const onChange = (e) => {
-        e.preventDefault();
-
+    const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target
+        setTaskData(prev => ({ ...prev, [name]: value }))
     }
 
-    const createTask = async () => {
+    const createTask = async (e: React.FormEvent) => {
+        e.preventDefault()
+        if (!taskData.title.trim()) return
         try {
-            const { data } = await axios.post('http://localhost:3000/api/tasks/create-task', taskData)
+            setLoading(true)
+            const { data } = await axios.post('/api/tasks/create-task', taskData)
             if (data.success) {
-                console.log('Task created!')
+                toggleCreateTaskPopup()
+                setTaskData({ title: "", description: "", priority: "medium", dueDate: "" })
             }
         } catch (error) {
-            console.log("task creating error");
+            console.log("Task creating error", error)
+        } finally {
+            setLoading(false)
         }
-
     }
+
     return (
-        <div className='w-screen min-h-screen flex justify-center items-center bg-black/10 backdrop-blur-sm absolute top-0 right-0 z-30'>
-            <div className='w-70 min-h-80 p-4 flex justify-center items-center flex-col bg-foreground'>
-                <div className='w-full'>
-                    <h1>Create Task</h1>
-                    <button onClick={toggleCreateTaskPopup}><X /></button>
+        <div
+            onClick={(e) => e.target === e.currentTarget && toggleCreateTaskPopup()}
+            className="fixed inset-0 z-30 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4"
+        >
+            <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-6">
+
+                {/* Header */}
+                <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-base font-semibold text-gray-900">New Task</h2>
+                    <button
+                        onClick={toggleCreateTaskPopup}
+                        className="p-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-500 transition-colors"
+                    >
+                        <X size={15} />
+                    </button>
                 </div>
-                <form>
-                    <div>
-                        <label htmlFor="title">Title</label>
-                        <input onChange={onChange} type="text" placeholder='Enter Title' name='title' />
+
+                <form onSubmit={createTask} className="flex flex-col gap-1">
+
+                    {/* Title */}
+                    <div className="flex items-center gap-3 py-3 border-b border-gray-100">
+                        <Type size={15} className="text-gray-300 shrink-0" />
+                        <input
+                            type="text"
+                            name="title"
+                            placeholder="Task title"
+                            value={taskData.title}
+                            onChange={onChange}
+                            required
+                            className="w-full text-sm font-medium text-gray-900 placeholder:text-gray-300 outline-none bg-transparent"
+                        />
                     </div>
-                    <div>
-                        <label htmlFor="description">Description</label>
-                        <input onChange={onChange} type="text" placeholder='Enter Description' name='description' />
+
+                    {/* Description */}
+                    <div className="flex items-start gap-3 py-3 border-b border-gray-100">
+                        <AlignLeft size={15} className="text-gray-300 shrink-0 mt-0.5" />
+                        <textarea
+                            name="description"
+                            placeholder="Add description..."
+                            value={taskData.description}
+                            onChange={onChange}
+                            rows={2}
+                            className="w-full text-sm text-gray-700 placeholder:text-gray-300 outline-none bg-transparent resize-none"
+                        />
                     </div>
-                    <div>
-                        <label htmlFor="priority">Priority</label>
-                        <select name="priority" id="">
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
-                        </select>
+
+                    {/* Priority */}
+                    <div className="flex items-center gap-3 py-3 border-b border-gray-100">
+                        <Flag size={15} className="text-gray-300 shrink-0" />
+                        <div className="flex gap-2">
+                            {([
+                                { value: 'high', label: 'High', active: 'bg-red-500 text-white border-red-500', inactive: 'text-red-500 border-red-300 hover:bg-red-50' },
+                                { value: 'medium', label: 'Medium', active: 'bg-amber-500 text-white border-amber-500', inactive: 'text-amber-500 border-amber-300 hover:bg-amber-50' },
+                                { value: 'low', label: 'Low', active: 'bg-green-500 text-white border-green-500', inactive: 'text-green-500 border-green-300 hover:bg-green-50' },
+                            ]).map(p => (
+                                <button
+                                    key={p.value}
+                                    type="button"
+                                    onClick={() => setTaskData(prev => ({ ...prev, priority: p.value }))}
+                                    className={`px-3 py-1 rounded-full border text-xs font-medium transition-all ${taskData.priority === p.value ? p.active : p.inactive}`}
+                                >
+                                    {p.label}
+                                </button>
+                            ))}
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="date">Due Date</label>
-                        <input onChange={onChange} type="date" placeholder='Enter Due Date' name='date' />
+
+                    {/* Due Date */}
+                    <div className="flex items-center gap-3 py-3">
+                        <Calendar size={15} className="text-gray-300 shrink-0" />
+                        <input
+                            type="date"
+                            name="dueDate"
+                            value={taskData.dueDate}
+                            onChange={onChange}
+                            className="w-full text-sm text-gray-700 outline-none bg-transparent"
+                        />
                     </div>
+
+                    {/* Submit */}
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full mt-4 py-2.5 rounded-xl bg-gray-900 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium transition-colors"
+                    >
+                        {loading ? 'Creating...' : 'Create Task'}
+                    </button>
+
                 </form>
             </div>
         </div>
