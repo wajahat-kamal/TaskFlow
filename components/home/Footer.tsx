@@ -1,7 +1,7 @@
 "use client"
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import { links } from "@/data/generalData";
+import { links } from "@/data/general-data";
 import { fadeUp } from "../resuable/FadeUpAnimation";
 
 export default function Footer() {

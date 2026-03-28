@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion";
-import { features, stats } from "@/data/generalData";
+import { features, stats } from "@/data/general-data";
 import { fadeUp } from "../resuable/FadeUpAnimation";
 
 export default function AboutSection() {

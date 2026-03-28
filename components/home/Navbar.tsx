@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { nav_items } from '@/data/generalData';
+import { nav_items } from '@/data/general-data';
 import Link from 'next/link';
 import { Show, SignInButton, SignUpButton } from '@clerk/nextjs';
 
